@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#00ffffff" />
+    <padding android:left="@dimen/offset_item"
+        android:top="@dimen/offset_item"
+        android:right="@dimen/offset_item"
+        android:bottom="@dimen/offset_item" />
+    <corners android:radius="@dimen/offset_item" />
+    <stroke android:width="@dimen/offset_item" android:color="@android:color/white" />
+</shape>

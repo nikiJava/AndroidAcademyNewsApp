@@ -14,13 +14,12 @@ public class LanguageRepository {
         this.sharedPreferences = sharedPreferences;
     }
 
-    public void changeLocale(LanguageLocale languageLocale) {
+    public void changeLocale(final LanguageLocale languageLocale) {
         sharedPreferences.edit().putString(LOCALE, languageLocale.toString()).apply();
     }
 
     public LanguageLocale getLocale() {
-        String value = sharedPreferences.getString(LOCALE, LanguageLocale.RUSSIAN.toString());
+        final String value = sharedPreferences.getString(LOCALE, LanguageLocale.RUSSIAN.toString());
         return LanguageLocale.valueOf(value);
     }
-
 }

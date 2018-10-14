@@ -13,27 +13,27 @@ import ru.nikijava.androidacademynewsapp.presentation.OnLanguageClickListener;
 public class ItemLanguageViewHolder extends BaseViewHolder<Language> implements
         View.OnClickListener {
 
-    @NonNull private TextView tvLanguageName;
-    @Nullable private OnLanguageClickListener onClickListener;
+    @NonNull private final TextView tvLanguageName;
+    @Nullable private final OnLanguageClickListener onClickListener;
     private Language currentLanguage;
 
 
-    public ItemLanguageViewHolder(@NonNull final View parent,
+    public ItemLanguageViewHolder(@NonNull final View itemView,
             @Nullable final OnLanguageClickListener onLanguageClickListener) {
-        super(parent);
+        super(itemView);
         this.onClickListener = onLanguageClickListener;
-        parent.setOnClickListener(this);
-        tvLanguageName = parent.findViewById(R.id.tvLanguageName);
+        itemView.setOnClickListener(this);
+        tvLanguageName = itemView.findViewById(R.id.tvLanguageName);
     }
 
     @Override
-    protected void bind(Language item) {
+    protected void bind(@NonNull final Language item) {
         currentLanguage = item;
         tvLanguageName.setText(item.getText());
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
         if (onClickListener != null) {
             onClickListener.onLanguageClick(currentLanguage);
         }

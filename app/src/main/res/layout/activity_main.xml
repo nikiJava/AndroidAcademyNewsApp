@@ -34,8 +34,7 @@
                 android:layout_height="@dimen/height_avatar_portrait"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                >
-            </include>
+                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvContent"

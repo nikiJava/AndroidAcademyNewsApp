@@ -8,22 +8,21 @@ import ru.nikijava.androidacademynewsapp.delegate_adapter.Item;
 
 public class Achievement implements Item {
 
-    private final @DrawableRes int ico;
+    private final @DrawableRes int icon;
     @NonNull private final String text;
-    @Nullable private String url;
+    @Nullable private final String url;
 
-    public Achievement(@DrawableRes int ico, @NonNull String text, @Nullable String url) {
-        this.ico = ico;
+    public Achievement(@DrawableRes final int icon,
+                       @NonNull final String text,
+                       @Nullable final String url
+    ) {
+        this.icon = icon;
         this.text = text;
         this.url = url;
     }
 
-    public static Achievement fromLink(Link link) {
-        return new Achievement(link.getIco(), link.getName(), link.getUrl());
-    }
-
-    public int getIco() {
-        return ico;
+    public int getIcon() {
+        return icon;
     }
 
     @NonNull
@@ -34,5 +33,9 @@ public class Achievement implements Item {
     @Nullable
     public String getUrl() {
         return url;
+    }
+
+    public static Achievement fromLink(@NonNull final Link link) {
+        return new Achievement(link.getIcon(), link.getName(), link.getUrl());
     }
 }

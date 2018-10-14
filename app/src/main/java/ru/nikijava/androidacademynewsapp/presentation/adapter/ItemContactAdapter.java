@@ -14,9 +14,9 @@ import ru.nikijava.androidacademynewsapp.presentation.viewholders.ItemContactVie
 
 public class ItemContactAdapter extends BaseDelegateAdapter<ItemContactViewHolder, Contact> {
 
-    @Nullable private OnContactClickListener onClickListener;
+    @Nullable private final OnContactClickListener onClickListener;
 
-    public ItemContactAdapter(@Nullable OnContactClickListener onClickListener) {
+    public ItemContactAdapter(@Nullable final OnContactClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 
@@ -27,12 +27,12 @@ public class ItemContactAdapter extends BaseDelegateAdapter<ItemContactViewHolde
 
     @NonNull
     @Override
-    protected ItemContactViewHolder createViewHolder(View parent) {
-        return new ItemContactViewHolder(parent, onClickListener);
+    protected ItemContactViewHolder createViewHolder(@NonNull final View itemView) {
+        return new ItemContactViewHolder(itemView, onClickListener);
     }
 
     @Override
-    public boolean isForViewType(@NonNull List<?> items, int position) {
+    public boolean isForViewType(@NonNull final List<?> items, final int position) {
         return items.get(position) instanceof Contact;
     }
 }

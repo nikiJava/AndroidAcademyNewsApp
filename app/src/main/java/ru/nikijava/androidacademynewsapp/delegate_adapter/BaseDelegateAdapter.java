@@ -14,15 +14,19 @@ public abstract class BaseDelegateAdapter
 
 
     @Override
-    public final void onBindViewHolder(@NonNull VH holder, @NonNull List<T> items, int position) {
+    public final void onBindViewHolder(
+            @NonNull final VH holder,
+            @NonNull final List<T> items,
+            final int position
+    ) {
         holder.bind(items.get(position));
     }
 
     @NonNull
     @Override
     public final RecyclerView.ViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent,
-            int viewType
+            @NonNull final ViewGroup parent,
+            final int viewType
     ) {
         final View inflatedView = LayoutInflater
                 .from(parent.getContext())
@@ -31,12 +35,12 @@ public abstract class BaseDelegateAdapter
     }
 
     @Override
-    public void onRecycled(VH holder) {
+    public void onRecycled(@NonNull final VH holder) {
     }
 
     @LayoutRes
     abstract protected int getLayoutId();
 
     @NonNull
-    abstract protected VH createViewHolder(final View parent);
+    abstract protected VH createViewHolder(@NonNull final View itemView);
 }

@@ -6,9 +6,9 @@ import ru.nikijava.androidacademynewsapp.delegate_adapter.Item;
 
 public class About implements Item {
 
-    @NonNull private String text;
+    @NonNull private final String text;
 
-    public About(@NonNull String text) {
+    public About(@NonNull final String text) {
         this.text = text;
     }
 

@@ -17,12 +17,12 @@ public class DividerAdapter extends BaseDelegateAdapter<DividerViewHolder, Divid
 
     @NonNull
     @Override
-    protected DividerViewHolder createViewHolder(View parent) {
-        return new DividerViewHolder(parent);
+    protected DividerViewHolder createViewHolder(@NonNull final View itemView) {
+        return new DividerViewHolder(itemView);
     }
 
     @Override
-    public boolean isForViewType(@NonNull List<?> items, int position) {
+    public boolean isForViewType(@NonNull final List<?> items, final int position) {
         return items.get(position) instanceof Divider;
     }
 }

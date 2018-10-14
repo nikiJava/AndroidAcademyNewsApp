@@ -2,12 +2,10 @@ package ru.nikijava.androidacademynewsapp.presentation;
 
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -29,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.nikijava.androidacademynewsapp.R;
-import ru.nikijava.androidacademynewsapp.data.LanguageRepository;
 import ru.nikijava.androidacademynewsapp.data.models.About;
 import ru.nikijava.androidacademynewsapp.data.models.Achievement;
 import ru.nikijava.androidacademynewsapp.data.models.Contact;
@@ -42,18 +39,21 @@ import ru.nikijava.androidacademynewsapp.domain.EmailInteractor;
 import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemAboutAdapter;
 import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemAchievementAdapter;
 import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemContactAdapter;
+import ru.nikijava.androidacademynewsapp.presentation.common.BaseActivity;
 import ru.nikijava.androidacademynewsapp.presentation.decorations.Divider;
 import ru.nikijava.androidacademynewsapp.presentation.decorations.DividerAdapter;
-import ru.nikijava.androidacademynewsapp.utils.LocaleDelegate;
 
 public class MainActivity
-        extends AppCompatActivity
+        extends BaseActivity
         implements OnContactClickListener, OnAchievementClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int LANGUAGE_REQUEST_CODE = 2;
 
     private static final int layout = R.layout.activity_main;
+
+    private final EmailInteractor emailInteractor = new EmailInteractor();
+    private final BrowserInteractor browserInteractor = new BrowserInteractor();
 
     private ImageView ivAvatar;
     private RecyclerView rvContent;
@@ -67,22 +67,8 @@ public class MainActivity
     private CompositeDelegateAdapter<Item> contentAdapter;
     private CompositeDelegateAdapter<Item> contactAdapter;
 
-    private EmailInteractor emailInteractor = new EmailInteractor();
-    private BrowserInteractor browserInteractor = new BrowserInteractor();
-    private LanguageRepository languageRepository;
-    private LocaleDelegate localeDelegate = new LocaleDelegate();
-
-
     @Override
-    protected void attachBaseContext(Context newBase) {
-        languageRepository = new LanguageRepository(
-                PreferenceManager.getDefaultSharedPreferences(newBase));
-        super.attachBaseContext(
-                localeDelegate.setLocale(languageRepository.getLocale().getName(), newBase));
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout);
         initView();
@@ -112,7 +98,11 @@ public class MainActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(
+            final int requestCode,
+            final int resultCode,
+            @Nullable final Intent data
+    ) {
         if (requestCode == LANGUAGE_REQUEST_CODE) {
             if (data != null) {
                 LanguageLocale language = (LanguageLocale) data.getSerializableExtra(
@@ -130,14 +120,14 @@ public class MainActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull final Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.itemLanguage:
                 Intent intent = new Intent(this, LanguagesActivity.class);
@@ -150,13 +140,17 @@ public class MainActivity
 
 
     @Override
-    public void onContactClick(Contact contact) {
-        openUrl(contact.getUrl());
+    public void onContactClick(@NonNull final Contact contact) {
+        if (contact.getUrl() != null) {
+            openUrl(contact.getUrl());
+        }
     }
 
     @Override
-    public void onAchievementClick(Achievement achievement) {
-        openUrl(achievement.getUrl());
+    public void onAchievementClick(@NonNull final Achievement achievement) {
+        if (achievement.getUrl() != null) {
+            openUrl(achievement.getUrl());
+        }
     }
 
     private void initView() {
@@ -179,7 +173,7 @@ public class MainActivity
         params.height = (int) (layoutPosition * 0.4);
     }
 
-    private void openUrl(String url) {
+    private void openUrl(@NonNull final String url) {
         browserInteractor.openUrlInBrowser(url, this);
     }
 
@@ -224,11 +218,11 @@ public class MainActivity
         return etMessage.getText().toString();
     }
 
-    private void fillAboutInfo(List<Item> data) {
+    private void fillAboutInfo(@NonNull List<Item> data) {
         contentAdapter.swapData(data);
     }
 
-    private void fillContactInfo(List<Item> data) {
+    private void fillContactInfo(@NonNull List<Item> data) {
         contactAdapter.swapData(data);
     }
 
@@ -262,5 +256,4 @@ public class MainActivity
         );
         layoutContacts.setLayoutParams(contactParams);
     }
-
 }

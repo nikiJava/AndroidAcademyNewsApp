@@ -8,22 +8,18 @@ import ru.nikijava.androidacademynewsapp.delegate_adapter.Item;
 
 public class Contact implements Item {
 
-    @DrawableRes private int ico;
-    @Nullable private String url;
-    @NonNull private String name;
+    @DrawableRes private final int icon;
+    @Nullable private final String url;
+    @NonNull private final String name;
 
-    public Contact(int ico, @Nullable String url, @NonNull String name) {
-        this.ico = ico;
+    public Contact(final int icon, @Nullable final String url, @NonNull final String name) {
+        this.icon = icon;
         this.url = url;
         this.name = name;
     }
 
-    public static Contact fromLink(Link link) {
-        return new Contact(link.getIco(), link.getUrl(), link.getName());
-    }
-
-    public int getIco() {
-        return ico;
+    public int getIcon() {
+        return icon;
     }
 
     @NonNull
@@ -34,5 +30,9 @@ public class Contact implements Item {
     @Nullable
     public String getUrl() {
         return url;
+    }
+
+    public static Contact fromLink(@NonNull final Link link) {
+        return new Contact(link.getIcon(), link.getUrl(), link.getName());
     }
 }

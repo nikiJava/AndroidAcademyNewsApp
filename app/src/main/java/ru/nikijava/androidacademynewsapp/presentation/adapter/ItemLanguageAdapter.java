@@ -14,7 +14,7 @@ import ru.nikijava.androidacademynewsapp.presentation.viewholders.ItemLanguageVi
 
 public class ItemLanguageAdapter extends BaseDelegateAdapter<ItemLanguageViewHolder, Language> {
 
-    @Nullable private OnLanguageClickListener onClickListener;
+    @Nullable private final OnLanguageClickListener onClickListener;
 
     public ItemLanguageAdapter(@Nullable final OnLanguageClickListener onClickListener) {
         this.onClickListener = onClickListener;
@@ -27,12 +27,12 @@ public class ItemLanguageAdapter extends BaseDelegateAdapter<ItemLanguageViewHol
 
     @NonNull
     @Override
-    protected ItemLanguageViewHolder createViewHolder(final View parent) {
-        return new ItemLanguageViewHolder(parent, onClickListener);
+    protected ItemLanguageViewHolder createViewHolder(@NonNull final View itemView) {
+        return new ItemLanguageViewHolder(itemView, onClickListener);
     }
 
     @Override
-    public boolean isForViewType(@NonNull List items, int position) {
+    public boolean isForViewType(@NonNull final List items, final int position) {
         return items.get(position) instanceof Language;
     }
 }

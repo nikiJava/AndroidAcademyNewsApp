@@ -15,15 +15,15 @@ public class ItemAchievementViewHolder
         extends BaseViewHolder<Achievement>
         implements View.OnClickListener {
 
-    @NonNull private TextView tvAchievementText;
-    @NonNull private ImageView ivAchievementIco;
-    @Nullable private OnAchievementClickListener onAchievementClickListener;
+    @NonNull private final TextView tvAchievementText;
+    @NonNull private final ImageView ivAchievementIco;
+    @Nullable private final OnAchievementClickListener onAchievementClickListener;
 
     @Nullable private Achievement currentItem;
 
     public ItemAchievementViewHolder(
-            @NonNull View itemView,
-            @Nullable OnAchievementClickListener onAchievementClickListener
+            @NonNull final View itemView,
+            @Nullable final OnAchievementClickListener onAchievementClickListener
     ) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -32,14 +32,14 @@ public class ItemAchievementViewHolder
         ivAchievementIco = itemView.findViewById(R.id.ivAchievementIco);
     }
 
-    public void bind(@NonNull Achievement achievement) {
+    public void bind(@NonNull final Achievement achievement) {
         currentItem = achievement;
         tvAchievementText.setText(achievement.getText());
-        ivAchievementIco.setBackgroundResource(R.drawable.logo_work);
+        ivAchievementIco.setBackgroundResource(achievement.getIcon());
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
         if (onAchievementClickListener != null) {
             onAchievementClickListener.onAchievementClick(currentItem);
         }

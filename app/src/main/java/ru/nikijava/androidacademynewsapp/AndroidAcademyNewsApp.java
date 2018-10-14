@@ -1,6 +1,7 @@
 package ru.nikijava.androidacademynewsapp;
 
 import android.app.Application;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatDelegate;
 
 public class AndroidAcademyNewsApp extends Application {
@@ -14,5 +15,4 @@ public class AndroidAcademyNewsApp extends Application {
     private void initVectors() {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
-
 }

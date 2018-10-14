@@ -12,10 +12,8 @@
         android:id="@+id/ivAchievementIco"
         android:layout_width="@dimen/size_achievement_item_ico"
         android:layout_height="@dimen/size_achievement_item_ico"
-        android:layout_gravity="center_vertical"
-        android:cropToPadding="false"
-        android:scaleType="fitXY"
-        tools:srcCompat="@drawable/logo_work"
+        android:scaleType="center"
+        tools:background="@drawable/logo_work_cropped"
         />
 
     <TextView

@@ -10,9 +10,9 @@ import ru.nikijava.androidacademynewsapp.delegate_adapter.BaseViewHolder;
 
 public class ItemAboutViewHolder extends BaseViewHolder<About> {
 
-    private TextView tvAbout;
+    private final TextView tvAbout;
 
-    public ItemAboutViewHolder(@NonNull View itemView) {
+    public ItemAboutViewHolder(@NonNull final View itemView) {
         super(itemView);
         tvAbout = itemView.findViewById(R.id.tvAbout);
     }
@@ -20,5 +20,4 @@ public class ItemAboutViewHolder extends BaseViewHolder<About> {
     public void bind(@NonNull About about) {
         tvAbout.setText(about.getText());
     }
-
 }

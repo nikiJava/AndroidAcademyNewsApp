@@ -8,14 +8,16 @@ import java.util.List;
 
 public interface IDelegateAdapter<VH extends RecyclerView.ViewHolder, T> {
 
-    boolean isForViewType(@NonNull List<?> items, int position);
+    boolean isForViewType(@NonNull final List<?> items, final int position);
 
-    void onBindViewHolder(@NonNull VH holder,
-            @NonNull List<T> items,
-            int position);
+    void onBindViewHolder(
+            @NonNull final VH holder,
+            @NonNull final List<T> items,
+            final int position
+    );
 
     @NonNull
-    RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType);
+    RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType);
 
-    void onRecycled(VH holder);
+    void onRecycled(@NonNull final VH holder);
 }

@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 public enum LanguageLocale {
     RUSSIAN("ru"), ENGLISH("en");
 
-    @NonNull private String name;
+    @NonNull private final String name;
 
-    LanguageLocale(@NonNull String name) {
+    LanguageLocale(@NonNull final String name) {
         this.name = name;
     }
 
@@ -15,5 +15,4 @@ public enum LanguageLocale {
     public String getName() {
         return name;
     }
-
 }

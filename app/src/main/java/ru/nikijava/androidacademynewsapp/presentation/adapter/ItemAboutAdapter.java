@@ -19,12 +19,12 @@ public class ItemAboutAdapter extends BaseDelegateAdapter<ItemAboutViewHolder, A
 
     @NonNull
     @Override
-    protected ItemAboutViewHolder createViewHolder(View parent) {
-        return new ItemAboutViewHolder(parent);
+    protected ItemAboutViewHolder createViewHolder(@NonNull final View itemView) {
+        return new ItemAboutViewHolder(itemView);
     }
 
     @Override
-    public boolean isForViewType(@NonNull List<?> items, int position) {
+    public boolean isForViewType(@NonNull final List<?> items, final int position) {
         return items.get(position) instanceof About;
     }
 }

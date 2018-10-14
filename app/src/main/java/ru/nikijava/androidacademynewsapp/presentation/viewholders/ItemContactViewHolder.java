@@ -6,27 +6,40 @@ import android.view.View;
 import android.widget.ImageView;
 
 import ru.nikijava.androidacademynewsapp.R;
+import ru.nikijava.androidacademynewsapp.data.models.Achievement;
 import ru.nikijava.androidacademynewsapp.data.models.Contact;
 import ru.nikijava.androidacademynewsapp.delegate_adapter.BaseViewHolder;
 import ru.nikijava.androidacademynewsapp.presentation.OnContactClickListener;
 
-public class ItemContactViewHolder extends BaseViewHolder<Contact> {
+public class ItemContactViewHolder
+        extends BaseViewHolder<Contact>
+        implements View.OnClickListener {
 
-    @Nullable private OnContactClickListener onClickListener;
+    @Nullable private final OnContactClickListener onClickListener;
+    @NonNull private final ImageView ivContact;
 
-    private ImageView ivContact;
+    @Nullable private Contact currentItem;
 
-    public ItemContactViewHolder(@NonNull View parent,
-            @Nullable OnContactClickListener onClickListener) {
-        super(parent);
+
+    public ItemContactViewHolder(
+            @NonNull final View itemView,
+            @Nullable final OnContactClickListener onClickListener
+    ) {
+        super(itemView);
+        itemView.setOnClickListener(this);
         this.onClickListener = onClickListener;
-        ivContact = parent.findViewById(R.id.ivContact);
+        ivContact = itemView.findViewById(R.id.ivContact);
     }
 
-    public void bind(Contact contact) {
-        ivContact.setBackgroundResource(contact.getIco());
-        ivContact.setOnClickListener(v -> {
-            if (onClickListener != null) onClickListener.onContactClick(contact);
-        });
+    public void bind(@NonNull final Contact contact) {
+        currentItem = contact;
+        ivContact.setBackgroundResource(contact.getIcon());
+    }
+
+    @Override
+    public void onClick(final View v) {
+        if (onClickListener != null) {
+            onClickListener.onContactClick(currentItem);
+        }
     }
 }

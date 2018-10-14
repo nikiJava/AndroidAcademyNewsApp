@@ -15,9 +15,11 @@ import ru.nikijava.androidacademynewsapp.presentation.viewholders.ItemAchievemen
 public class ItemAchievementAdapter extends
         BaseDelegateAdapter<ItemAchievementViewHolder, Achievement> {
 
-    @Nullable private OnAchievementClickListener onClickListener;
+    @Nullable private final OnAchievementClickListener onClickListener;
 
-    public ItemAchievementAdapter(@Nullable OnAchievementClickListener onAchievementClickListener) {
+    public ItemAchievementAdapter(
+            @Nullable final OnAchievementClickListener onAchievementClickListener
+    ) {
         this.onClickListener = onAchievementClickListener;
     }
 
@@ -28,12 +30,12 @@ public class ItemAchievementAdapter extends
 
     @NonNull
     @Override
-    protected ItemAchievementViewHolder createViewHolder(View parent) {
-        return new ItemAchievementViewHolder(parent, onClickListener);
+    protected ItemAchievementViewHolder createViewHolder(@NonNull final View itemView) {
+        return new ItemAchievementViewHolder(itemView, onClickListener);
     }
 
     @Override
-    public boolean isForViewType(@NonNull List<?> items, int position) {
+    public boolean isForViewType(@NonNull final List<?> items, final int position) {
         return items.get(position) instanceof Achievement;
     }
 

@@ -29,6 +29,7 @@
         android:layout_alignParentEnd="true"
         android:baselineAlignBottom="true"
         android:tint="@color/colorAccent"
+        android:contentDescription=""
         app:srcCompat="@drawable/ic_send_black_24dp"
         />
 

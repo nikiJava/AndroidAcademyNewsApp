@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import ru.nikijava.androidacademynewsapp.R;
-import ru.nikijava.androidacademynewsapp.data.models.Achievement;
 import ru.nikijava.androidacademynewsapp.data.models.Contact;
 import ru.nikijava.androidacademynewsapp.delegate_adapter.BaseViewHolder;
 import ru.nikijava.androidacademynewsapp.presentation.OnContactClickListener;
@@ -19,7 +18,6 @@ public class ItemContactViewHolder
     @NonNull private final ImageView ivContact;
 
     @Nullable private Contact currentItem;
-
 
     public ItemContactViewHolder(
             @NonNull final View itemView,

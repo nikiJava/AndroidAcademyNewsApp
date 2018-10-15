@@ -82,6 +82,7 @@
                     android:layout_marginEnd="@dimen/standard_margin"
                     android:baselineAlignBottom="true"
                     android:tint="@color/colorAccent"
+                    android:contentDescription="@string/content_description_send_message"
                     app:srcCompat="@drawable/ic_send_black_24dp"
                     />
 

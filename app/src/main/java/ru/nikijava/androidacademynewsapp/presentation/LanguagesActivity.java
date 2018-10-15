@@ -32,7 +32,7 @@ public class LanguagesActivity extends BaseActivity implements OnLanguageClickLi
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(R.string.language);
         rvLanguages = findViewById(R.id.rvLanguages);
-        List<Item> data = prepareData();
+        List<Language> data = prepareData();
         initLanguageList(data);
     }
     @Override
@@ -40,11 +40,9 @@ public class LanguagesActivity extends BaseActivity implements OnLanguageClickLi
         onLanguageSelected(language);
     }
 
-    private void initLanguageList(final List<Item> data) {
-        CompositeDelegateAdapter<Item> adapter = new CompositeDelegateAdapter.Builder<Item>()
-                .add(new ItemLanguageAdapter(this))
-                .build();
-        adapter.swapData(data);
+    private void initLanguageList(final List<Language> data) {
+        final ItemLanguageAdapter adapter = new ItemLanguageAdapter(this);
+        adapter.updateData(data);
         rvLanguages.setAdapter(adapter);
     }
 
@@ -55,8 +53,8 @@ public class LanguagesActivity extends BaseActivity implements OnLanguageClickLi
         finish();
     }
 
-    private List<Item> prepareData() {
-        List<Item> languages = new ArrayList<>(2);
+    private List<Language> prepareData() {
+        List<Language> languages = new ArrayList<>(2);
         languages.add(new Language(getString(SupportedLanguages.RUSSIAN), LanguageLocale.RUSSIAN));
         languages.add(new Language(getString(SupportedLanguages.ENGLISH), LanguageLocale.ENGLISH));
         return languages;

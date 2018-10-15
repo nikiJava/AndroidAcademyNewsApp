@@ -14,4 +14,6 @@
 
     <string name="language_russian">Русский</string>
     <string name="language_english">Английский</string>
+    <string name="content_description_send_message">Кнопка отправки сообщения</string>
+    <string name="content_description_developer_photo">Фотография разработчика</string>
 </resources>

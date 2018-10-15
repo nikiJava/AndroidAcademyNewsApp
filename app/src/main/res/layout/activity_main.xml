@@ -74,6 +74,7 @@
                 android:baselineAlignBottom="true"
                 android:tint="@color/colorAccent"
                 app:srcCompat="@drawable/ic_send_black_24dp"
+                android:contentDescription="@string/content_description_send_message"
                 />
 
 

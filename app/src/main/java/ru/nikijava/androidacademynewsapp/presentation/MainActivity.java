@@ -185,7 +185,6 @@ public class MainActivity
                 .build();
         rvContent.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        rvContent.offsetChildrenVertical((int) getResources().getDimension(R.dimen.offset_item));
         rvContent.setAdapter(contentAdapter);
         rvContent.setNestedScrollingEnabled(true);
 
@@ -193,7 +192,6 @@ public class MainActivity
                 .add(new ItemContactAdapter(this))
                 .build();
         rvContacts.setAdapter(contactAdapter);
-        rvContacts.offsetChildrenVertical((int) getResources().getDimension(R.dimen.offset_item));
     }
 
     private List<Item> getData() {

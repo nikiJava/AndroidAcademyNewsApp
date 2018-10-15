@@ -27,7 +27,7 @@ public class ItemLanguageViewHolder extends BaseViewHolder<Language> implements
     }
 
     @Override
-    protected void bind(@NonNull final Language item) {
+    public void bind(@NonNull final Language item) {
         currentLanguage = item;
         tvLanguageName.setText(item.getText());
     }

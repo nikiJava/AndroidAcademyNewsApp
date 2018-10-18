@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/size_item_contact"
+    android:layout_height="@dimen/size_item_contact"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/ivContact"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_item_contact"
+        tools:srcCompat="@drawable/ic_telegram"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_rounded"
+        />
+
+</FrameLayout>

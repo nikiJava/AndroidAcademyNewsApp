@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">AndroidAcademyNewsApp</string>
+    <string name="app_name">New York Times</string>
+    <string name="my_first_name">Nikita</string>
+    <string name="my_second_name">Yatskivskiy</string>
+    <string name="full_name">Nikita Yatskivskiy</string>
+    <string name="about_me">Nikita is just another boy who sees his future in a skin of an Android developer. His hunger of mobile development was born only two years ago, when he was a student of the Russian University of Transport. Inspired by his friend he started to learn tricks of Android development. His experience is not so much. In the past he worked on a project of All-Russia People\'s Front (ONF), except of self education. At the moment he works on Android client of Wellmark Group company.</string>
+    <string name="wellmark_group" translatable="false">Wellmark Group</string>
+    <string name="enter_message_hint">Enter a message…</string>
+    <string name="send_message">send message</string>
+    <string name="message_no_email_client">There is no any email client on your phone</string>
+    <string name="disclaimer" formatted="true" translatable="false">"© 2018 %s"</string>
+    <string name="language">Language</string>
+
+    <string name="menu_item_language">@string/language</string>
+
+    <string name="language_russian">Russian</string>
+    <string name="language_english">English</string>
 </resources>

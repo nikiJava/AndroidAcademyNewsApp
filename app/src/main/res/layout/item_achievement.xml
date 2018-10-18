@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/offset_item"
+    android:layout_marginBottom="@dimen/offset_item"
+    >
+
+    <ImageView
+        android:id="@+id/ivAchievementIco"
+        android:layout_width="@dimen/size_achievement_item_ico"
+        android:layout_height="@dimen/size_achievement_item_ico"
+        android:scaleType="center"
+        tools:background="@drawable/logo_work_cropped"
+        />
+
+    <TextView
+        android:id="@+id/tvAchievementText"
+        android:textSize="@dimen/text_size"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/offset_item"
+        android:includeFontPadding="false"
+        android:gravity="center_vertical"
+        tools:text="Super-developer"
+        />
+
+</LinearLayout>

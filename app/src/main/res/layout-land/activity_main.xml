@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.MainActivity"
+    >
+
+    <include
+        layout="@layout/app_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <include
+            android:id="@+id/layoutAvatar"
+            layout="@layout/item_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            >
+        </include>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <RelativeLayout
+                android:id="@+id/layoutContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="beforeDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/offset_item"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:layout_marginStart="@dimen/margin_start"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_achievement"
+                    />
+
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rvContent"
+                    android:layout_marginStart="@dimen/margin_start"
+                    android:layout_marginTop="@dimen/offset_item"
+                    android:layout_toStartOf="@id/ivSendMessage"
+                    android:hint="@string/enter_message_hint"
+                    android:imeOptions="actionSend|flagNoExtractUi"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/offset_item"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivSendMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/etMessage"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/standard_margin"
+                    android:baselineAlignBottom="true"
+                    android:tint="@color/colorAccent"
+                    app:srcCompat="@drawable/ic_send_black_24dp"
+                    />
+
+
+                <RelativeLayout
+                    android:id="@+id/layoutContacts"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/etMessage"
+                    android:layout_marginBottom="@dimen/standard_margin"
+                    android:layout_marginEnd="@dimen/standard_margin"
+                    android:layout_marginStart="@dimen/margin_start"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    >
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rvContacts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/offset_item"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/item_contact"
+                        />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

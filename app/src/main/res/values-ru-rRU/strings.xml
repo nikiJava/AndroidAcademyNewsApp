@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">New York Times</string>
+    <string name="my_first_name">Никита</string>
+    <string name="my_second_name">Яцкивский</string>
+    <string name="full_name">Никита Яцкивский</string>
+    <string name="about_me">"Никита - ещё один парнишка, который видит своё будущее в качестве Андройд-разработчика. Неудержимое желание заниматься мобильной разработкой появилось у него всего два года назад, в тот момент, когда он учился в \"Российиском университете транспорта\". Изучение Андройд-разработки он начал будучи вдохновлённым свои другом. Опыт мобильной разработки Никиты на данный момент нельзя назвать большим. За своей спиной, кроме самообучения, имеет участие над разработкой мобильного приложения для организации \"Общероссийский народный фронт\". В данный момент Никита работает над мобильным Android-клиентом компании Wellmark Group."</string>
+    <string name="enter_message_hint">Введите сообщение…</string>
+    <string name="send_message">отправить сообщение</string>
+    <string name="message_no_email_client">На Вашем телефоне отсутствует почтовый клиент</string>
+    <string name="language">Язык</string>
+
+    <string name="menu_item_language">@string/language</string>
+
+    <string name="language_russian">Русский</string>
+    <string name="language_english">Английский</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="offset_item">8dp</dimen>
+    <dimen name="margin_item_contact">4dp</dimen>
+    <dimen name="margin_start_consider_offset">42dp</dimen>
+    <dimen name="margin_start">50dp</dimen>
+    <dimen name="size_item_contact">64dp</dimen>
+    <dimen name="height_avatar_portrait">250dp</dimen>
+    <dimen name="size_achievement_item_ico">28dp</dimen>
+    <dimen name="status_bar_height">24dp</dimen>
+</resources>

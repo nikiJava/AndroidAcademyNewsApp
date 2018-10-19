@@ -14,4 +14,5 @@
     <string name="content_description_developer_photo">Developer photo</string>
     <string name="content_description_facebook_link">Link to developer page on Facebook</string>
     <string name="content_description_telegram_link">Link to developer page on Telegram</string>
+    <string name="content_description_wellmark_group">Wellmark Group the current job logo</string>
 </resources>

@@ -1,4 +1,4 @@
-package ru.nikijava.androidacademynewsapp.delegate_adapter;
+package ru.nikijava.adapterdelegate;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,7 @@ public class CompositeDelegateAdapter<T>
     @NonNull protected final List<T> data = new ArrayList<>();
     @NonNull private final SparseArray<IDelegateAdapter> typeToAdapterMap;
 
-    CompositeDelegateAdapter(@NonNull final SparseArray<IDelegateAdapter> typeToAdapterMap) {
+    private CompositeDelegateAdapter(@NonNull final SparseArray<IDelegateAdapter> typeToAdapterMap) {
         this.typeToAdapterMap = typeToAdapterMap;
     }
 

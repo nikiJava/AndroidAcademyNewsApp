@@ -1,4 +1,4 @@
-package ru.nikijava.androidacademynewsapp.delegate_adapter;
+package ru.nikijava.adapterdelegate;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -9,11 +9,11 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public abstract class BaseDelegateAdapter
-        <VH extends BaseViewHolder, T> implements IDelegateAdapter<VH, T> {
-
+public abstract class BaseDelegateAdapter<VH extends BaseViewHolder, T>
+        implements IDelegateAdapter<VH, T> {
 
     @Override
+    @SuppressWarnings("unchecked")
     public final void onBindViewHolder(
             @NonNull final VH holder,
             @NonNull final List<T> items,
@@ -39,8 +39,8 @@ public abstract class BaseDelegateAdapter
     }
 
     @LayoutRes
-    abstract protected int getLayoutId();
+    abstract int getLayoutId();
 
     @NonNull
-    abstract protected VH createViewHolder(@NonNull final View itemView);
+    abstract VH createViewHolder(@NonNull final View itemView);
 }

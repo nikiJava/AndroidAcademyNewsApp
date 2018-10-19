@@ -6,41 +6,25 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ru.nikijava.androidacademynewsapp.R;
-import ru.nikijava.androidacademynewsapp.data.models.About;
-import ru.nikijava.androidacademynewsapp.data.models.Achievement;
-import ru.nikijava.androidacademynewsapp.data.models.Contact;
 import ru.nikijava.androidacademynewsapp.data.models.Link;
-import ru.nikijava.androidacademynewsapp.delegate_adapter.CompositeDelegateAdapter;
-import ru.nikijava.androidacademynewsapp.delegate_adapter.Item;
 import ru.nikijava.androidacademynewsapp.domain.BrowserInteractor;
 import ru.nikijava.androidacademynewsapp.domain.EmailInteractor;
-import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemAboutAdapter;
-import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemAchievementAdapter;
-import ru.nikijava.androidacademynewsapp.presentation.adapter.ItemContactAdapter;
-import ru.nikijava.androidacademynewsapp.presentation.decorations.Divider;
-import ru.nikijava.androidacademynewsapp.presentation.decorations.DividerAdapter;
 
-public class MainActivity
-        extends AppCompatActivity
-        implements OnContactClickListener, OnAchievementClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int layout = R.layout.activity_main;
@@ -49,16 +33,15 @@ public class MainActivity
     private final BrowserInteractor browserInteractor = new BrowserInteractor();
 
     private ImageView ivAvatar;
-    private RecyclerView rvContent;
-    private RecyclerView rvContacts;
+    private ImageView ivContactTelegram;
+    private ImageView ivContactFacebook;
+    private TextView tvAbout;
     private EditText etMessage;
     private View ivSendMessage;
 
     private RelativeLayout layoutContent;
-    private RelativeLayout layoutContacts;
-
-    private CompositeDelegateAdapter<Item> contentAdapter;
-    private CompositeDelegateAdapter<Item> contactAdapter;
+    private LinearLayout layoutContacts;
+    private LinearLayout layoutAchievementWellmark;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -68,14 +51,33 @@ public class MainActivity
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(
                 getString(R.string.my_first_name) + " " + getString(R.string.my_second_name));
-        initContent();
-        fillAboutInfo(getData());
-        fillContactInfo(getContacts());
         Glide.with(this)
                 .load(R.drawable.me)
                 .apply(RequestOptions.overrideOf(500, 500))
                 .into(ivAvatar);
 
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
+        initListeners();
+    }
+
+    private void initView() {
+        etMessage = findViewById(R.id.etMessage);
+        ivAvatar = findViewById(R.id.ivAvatar);
+        ivSendMessage = findViewById(R.id.ivSendMessage);
+        ivContactTelegram = findViewById(R.id.ivContactTelegram);
+        ivContactFacebook = findViewById(R.id.ivContactFacebook);
+        tvAbout = findViewById(R.id.tvAbout);
+        layoutContent = findViewById(R.id.layoutContent);
+        layoutContacts = findViewById(R.id.layoutContacts);
+        layoutAchievementWellmark = findViewById(R.id.layoutAchievementWellmark);
+        addDisclaimer();
+    }
+
+    private void initListeners() {
+        ivContactTelegram.setOnClickListener(v -> onContactClick(Link.TELEGRAM.getUrl()));
+        ivContactFacebook.setOnClickListener(v -> onContactClick(Link.FACEBOOK.getUrl()));
+        layoutAchievementWellmark.setOnClickListener(v -> onAchievementClick(Link.WELLMARK.getUrl()));
         ivSendMessage.setOnClickListener(v -> emailInteractor.startEmailClient(getMessage(), this));
 
         etMessage.setOnEditorActionListener((v, actionId, event) -> {
@@ -85,40 +87,14 @@ public class MainActivity
             }
             return false;
         });
-
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        etMessage.clearFocus();
+    private void onContactClick(@NonNull final String contactUrl) {
+        openUrl(contactUrl);
     }
 
-    @Override
-    public void onContactClick(@NonNull final Contact contact) {
-        if (contact.getUrl() != null) {
-            openUrl(contact.getUrl());
-        }
-    }
-
-    @Override
-    public void onAchievementClick(@NonNull final Achievement achievement) {
-        if (achievement.getUrl() != null) {
-            openUrl(achievement.getUrl());
-        }
-    }
-
-    private void initView() {
-        etMessage = findViewById(R.id.etMessage);
-        ivAvatar = findViewById(R.id.ivAvatar);
-        rvContent = findViewById(R.id.rvContent);
-        rvContacts = findViewById(R.id.rvContacts);
-        ivSendMessage = findViewById(R.id.ivSendMessage);
-        layoutContent = findViewById(R.id.layoutContent);
-        layoutContacts = findViewById(R.id.layoutContacts);
-        addDisclaimer();
+    private void onAchievementClick(@NonNull final String achievementUrl) {
+        openUrl(achievementUrl);
     }
 
     private void recomputeAvatarSize() {
@@ -134,51 +110,8 @@ public class MainActivity
         browserInteractor.openUrlInBrowser(url, this);
     }
 
-    private void initContent() {
-        contentAdapter = new CompositeDelegateAdapter.Builder<Item>()
-                .add(new ItemAboutAdapter())
-                .add(new ItemAchievementAdapter(this))
-                .add(new DividerAdapter())
-                .build();
-        rvContent.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        rvContent.setAdapter(contentAdapter);
-        rvContent.setNestedScrollingEnabled(true);
-
-        contactAdapter = new CompositeDelegateAdapter.Builder<Item>()
-                .add(new ItemContactAdapter(this))
-                .build();
-        rvContacts.setAdapter(contactAdapter);
-    }
-
-    private List<Item> getData() {
-        List<Achievement> achievements = new ArrayList<>();
-        achievements.add(Achievement.fromLink(Link.WELLMARK));
-
-        List<Item> data = new ArrayList<>(achievements);
-        data.add(new Divider());
-        data.add(new About(getString(R.string.about_me)));
-        data.add(new Divider());
-        return data;
-    }
-
-    private List<Item> getContacts() {
-        List<Item> contacts = new ArrayList<>();
-        contacts.add(Contact.fromLink(Link.FACEBOOK));
-        contacts.add(Contact.fromLink(Link.TELEGRAM));
-        return contacts;
-    }
-
     private String getMessage() {
         return etMessage.getText().toString();
-    }
-
-    private void fillAboutInfo(@NonNull List<Item> data) {
-        contentAdapter.swapData(data);
-    }
-
-    private void fillContactInfo(@NonNull List<Item> data) {
-        contactAdapter.swapData(data);
     }
 
     private void addDisclaimer() {

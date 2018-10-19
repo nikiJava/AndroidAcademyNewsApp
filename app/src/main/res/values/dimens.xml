@@ -2,7 +2,8 @@
 <resources>
     <dimen name="text_size">16sp</dimen>
     <dimen name="standard_margin">16dp</dimen>
-    <dimen name="offset_item">8dp</dimen>
+    <dimen name="standard_margin_half">8dp</dimen>
+    <dimen name="offset_item">@dimen/standard_margin_half</dimen>
     <dimen name="margin_item_contact">4dp</dimen>
     <dimen name="margin_start_consider_offset">42dp</dimen>
     <dimen name="margin_start">50dp</dimen>

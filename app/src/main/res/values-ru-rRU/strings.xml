@@ -11,4 +11,7 @@
 
     <string name="content_description_send_message">Кнопка отправки сообщения</string>
     <string name="content_description_developer_photo">Фотография разработчика</string>
+    <string name="content_description_facebook_link">Ссылка на страницу разработчика в Facebook</string>
+    <string name="content_description_telegram_link">Ссылка на страницу разработчика в Telegram</string>
+    <string name="content_description_wellmark_group">Логотип Wellmark Group</string>
 </resources>

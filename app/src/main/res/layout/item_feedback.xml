@@ -9,7 +9,6 @@
         android:id="@+id/etMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rvContent"
         android:layout_marginTop="@dimen/offset_item"
         android:layout_marginBottom="@dimen/offset_item"
         android:layout_toStartOf="@id/ivSendMessage"

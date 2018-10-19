@@ -9,12 +9,7 @@
     <string name="send_message">send message</string>
     <string name="message_no_email_client">There is no any email client on your phone</string>
     <string name="disclaimer" formatted="true" translatable="false">"© 2018 %s"</string>
-    <string name="language">Language</string>
 
-    <string name="menu_item_language">@string/language</string>
-
-    <string name="language_russian">Russian</string>
-    <string name="language_english">English</string>
     <string name="content_description_send_message">Button to send message</string>
     <string name="content_description_developer_photo">Developer photo</string>
 </resources>

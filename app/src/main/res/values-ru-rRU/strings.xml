@@ -8,12 +8,7 @@
     <string name="enter_message_hint">Введите сообщение…</string>
     <string name="send_message">отправить сообщение</string>
     <string name="message_no_email_client">На Вашем телефоне отсутствует почтовый клиент</string>
-    <string name="language">Язык</string>
 
-    <string name="menu_item_language">@string/language</string>
-
-    <string name="language_russian">Русский</string>
-    <string name="language_english">Английский</string>
     <string name="content_description_send_message">Кнопка отправки сообщения</string>
     <string name="content_description_developer_photo">Фотография разработчика</string>
 </resources>

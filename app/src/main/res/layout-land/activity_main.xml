@@ -19,15 +19,15 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-        <include
-            android:id="@+id/layoutAvatar"
-            layout="@layout/item_avatar"
+        <ImageView
+            android:id="@+id/ivAvatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
             android:layout_weight="2"
-            >
-        </include>
+            android:contentDescription="@string/content_description_developer_photo"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/me"
+            />
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -41,36 +41,34 @@
                 android:descendantFocusability="beforeDescendants"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:orientation="vertical"
                 >
 
-                <LinearLayout
-                    android:id="@+id/layoutAchievementWellmark"
-                    style="@style/AchievementStyle.Layout"
+                <ImageView
+                    android:id="@+id/ivAchievementWellmarkIcon"
+                    style="@style/AchievementStyle.Icon"
                     android:layout_alignParentTop="true"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_marginStart="@dimen/margin_start"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:layout_marginBottom="@dimen/standard_margin"
+                    android:background="@drawable/logo_work_cropped"
+                    android:contentDescription="@string/content_description_wellmark_group"
+                    />
 
-                    <ImageView
-                        android:id="@+id/ivAchievementWellmarkIcon"
-                        style="@style/AchievementStyle.Icon"
-                        android:background="@drawable/logo_work_cropped"
-                        android:contentDescription="@string/content_description_wellmark_group"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvAchievementWellmarkName"
-                        style="@style/AchievementStyle.Text"
-                        android:text="@string/wellmark_group"
-                        />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvAchievementWellmarkName"
+                    style="@style/AchievementStyle.Text"
+                    android:layout_alignTop="@id/ivAchievementWellmarkIcon"
+                    android:layout_alignBottom="@id/ivAchievementWellmarkIcon"
+                    android:layout_toEndOf="@id/ivAchievementWellmarkIcon"
+                    android:gravity="center_vertical"
+                    android:text="@string/wellmark_group"
+                    />
 
                 <include
                     android:id="@+id/vDivider1"
                     style="@style/DividerStyle"
                     layout="@layout/divider"
-                    android:layout_below="@id/layoutAchievementWellmark"
+                    android:layout_below="@id/ivAchievementWellmarkIcon"
                     tools:ignore="IncludeLayoutParam"
                     />
 
@@ -80,7 +78,6 @@
                     android:layout_below="@id/vDivider1"
                     android:text="@string/about_me"
                     />
-
 
                 <include
                     android:id="@+id/vDivider2"
@@ -148,7 +145,7 @@
             </RelativeLayout>
 
         </android.support.v4.widget.NestedScrollView>
-    </LinearLayout>
 
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

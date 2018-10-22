@@ -58,9 +58,9 @@
     <style name="AchievementStyle.Text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_marginStart">@dimen/standard_margin_half</item>
+        <item name="android:paddingStart">@dimen/standard_margin_half</item>
+        <item name="android:layout_marginEnd">@dimen/standard_margin</item>
         <item name="android:textSize">@dimen/text_size</item>
-        <item name="android:gravity">center_vertical</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 

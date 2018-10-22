@@ -27,7 +27,6 @@ import ru.nikijava.androidacademynewsapp.domain.EmailInteractor;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final int layout = R.layout.activity_main;
 
     private final EmailInteractor emailInteractor = new EmailInteractor();
     private final BrowserInteractor browserInteractor = new BrowserInteractor();
@@ -38,26 +37,22 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvAbout;
     private EditText etMessage;
     private View ivSendMessage;
+    private ImageView ivAchievementWellmarkIcon;
+    private TextView tvAchievementWellmarkName;
 
     private RelativeLayout layoutContent;
     private LinearLayout layoutContacts;
-    private LinearLayout layoutAchievementWellmark;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout);
+        setContentView(R.layout.activity_main);
         initView();
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(
                 getString(R.string.my_first_name) + " " + getString(R.string.my_second_name));
-        Glide.with(this)
-                .load(R.drawable.me)
-                .apply(RequestOptions.overrideOf(500, 500))
-                .into(ivAvatar);
 
-        int orientation = getResources().getConfiguration().orientation;
-        if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
+        setAvatar();
         initListeners();
     }
 
@@ -70,14 +65,16 @@ public class MainActivity extends AppCompatActivity {
         tvAbout = findViewById(R.id.tvAbout);
         layoutContent = findViewById(R.id.layoutContent);
         layoutContacts = findViewById(R.id.layoutContacts);
-        layoutAchievementWellmark = findViewById(R.id.layoutAchievementWellmark);
+        ivAchievementWellmarkIcon = findViewById(R.id.ivAchievementWellmarkIcon);
+        tvAchievementWellmarkName = findViewById(R.id.tvAchievementWellmarkName);
         addDisclaimer();
     }
 
     private void initListeners() {
         ivContactTelegram.setOnClickListener(v -> onContactClick(Link.TELEGRAM.getUrl()));
         ivContactFacebook.setOnClickListener(v -> onContactClick(Link.FACEBOOK.getUrl()));
-        layoutAchievementWellmark.setOnClickListener(v -> onAchievementClick(Link.WELLMARK.getUrl()));
+        ivAchievementWellmarkIcon.setOnClickListener(v -> onAchievementClick(Link.WELLMARK.getUrl()));
+        tvAchievementWellmarkName.setOnClickListener(v -> ivAchievementWellmarkIcon.callOnClick());
         ivSendMessage.setOnClickListener(v -> emailInteractor.startEmailClient(getMessage(), this));
 
         etMessage.setOnEditorActionListener((v, actionId, event) -> {
@@ -97,14 +94,28 @@ public class MainActivity extends AppCompatActivity {
         openUrl(achievementUrl);
     }
 
+    private void setAvatar() {
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
+
+        int avatarHeight = ivAvatar.getHeight();
+        int avatarWidth = ivAvatar.getWidth();
+
+        Glide.with(this)
+             .load(R.drawable.me)
+             .apply(RequestOptions.overrideOf(avatarWidth, avatarHeight))
+             .into(ivAvatar);
+
+    }
     private void recomputeAvatarSize() {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         float layoutPosition = metrics.heightPixels - getSupportActionBar().getHeight()
                 - getResources().getDimension(R.dimen.status_bar_height);
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) ivAvatar.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ivAvatar.getLayoutParams();
         params.height = (int) (layoutPosition * 0.4);
     }
+
 
     private void openUrl(@NonNull final String url) {
         browserInteractor.openUrlInBrowser(url, this);

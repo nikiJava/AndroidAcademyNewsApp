@@ -6,18 +6,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import ru.nikijava.androidacademynewsapp.R;
 import ru.nikijava.androidacademynewsapp.data.models.Link;
@@ -30,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final EmailInteractor emailInteractor = new EmailInteractor();
     private final BrowserInteractor browserInteractor = new BrowserInteractor();
+
+    private Toolbar toolbar;
 
     private ImageView ivAvatar;
     private ImageView ivContactTelegram;
@@ -95,15 +96,11 @@ public class MainActivity extends AppCompatActivity {
         int orientation = getResources().getConfiguration().orientation;
         if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
 
-        int avatarHeight = ivAvatar.getHeight();
-        int avatarWidth = ivAvatar.getWidth();
-
         Glide.with(this)
              .load(R.drawable.me)
-             .apply(RequestOptions.overrideOf(avatarWidth, avatarHeight))
              .into(ivAvatar);
-
     }
+
     private void recomputeAvatarSize() {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);

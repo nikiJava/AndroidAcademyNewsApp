@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvAbout;
     private EditText etMessage;
     private View ivSendMessage;
-    private ImageView ivAchievementWellmarkIcon;
-    private TextView tvAchievementWellmarkName;
+    private LinearLayout itemAchievementWellmark;
 
     private RelativeLayout layoutContent;
     private LinearLayout layoutContacts;
@@ -65,16 +64,14 @@ public class MainActivity extends AppCompatActivity {
         tvAbout = findViewById(R.id.tvAbout);
         layoutContent = findViewById(R.id.layoutContent);
         layoutContacts = findViewById(R.id.layoutContacts);
-        ivAchievementWellmarkIcon = findViewById(R.id.ivAchievementWellmarkIcon);
-        tvAchievementWellmarkName = findViewById(R.id.tvAchievementWellmarkName);
+        itemAchievementWellmark = findViewById(R.id.itemAchievementWellmark);
         addDisclaimer();
     }
 
     private void initListeners() {
         ivContactTelegram.setOnClickListener(v -> onContactClick(Link.TELEGRAM.getUrl()));
         ivContactFacebook.setOnClickListener(v -> onContactClick(Link.FACEBOOK.getUrl()));
-        ivAchievementWellmarkIcon.setOnClickListener(v -> onAchievementClick(Link.WELLMARK.getUrl()));
-        tvAchievementWellmarkName.setOnClickListener(v -> ivAchievementWellmarkIcon.callOnClick());
+        itemAchievementWellmark.setOnClickListener(v -> onAchievementClick(Link.WELLMARK.getUrl()));
         ivSendMessage.setOnClickListener(v -> emailInteractor.startEmailClient(getMessage(), this));
 
         etMessage.setOnEditorActionListener((v, actionId, event) -> {

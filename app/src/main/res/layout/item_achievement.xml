@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemAchievementWellmark"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+    <ImageView
+        android:id="@+id/ivAchievementWellmarkIcon"
+        style="@style/AchievementStyle.Icon"
+        android:background="@drawable/logo_work_cropped"
+        android:contentDescription="@string/content_description_wellmark_group"
+        />
+
+    <TextView
+        android:id="@+id/tvAchievementWellmarkName"
+        style="@style/AchievementStyle.Text"
+        android:gravity="center_vertical"
+        android:text="@string/wellmark_group"
+        />
+</LinearLayout>

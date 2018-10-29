@@ -43,32 +43,19 @@
                 android:focusableInTouchMode="true"
                 >
 
-                <ImageView
-                    android:id="@+id/ivAchievementWellmarkIcon"
-                    style="@style/AchievementStyle.Icon"
+                <include
+                    android:id="@+id/itemAchievementWellmark"
+                    layout="@layout/item_achievement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="@dimen/margin_start"
-                    android:layout_marginTop="@dimen/standard_margin"
-                    android:layout_marginBottom="@dimen/standard_margin"
-                    android:background="@drawable/logo_work_cropped"
-                    android:contentDescription="@string/content_description_wellmark_group"
-                    />
-
-                <TextView
-                    android:id="@+id/tvAchievementWellmarkName"
-                    style="@style/AchievementStyle.Text"
-                    android:layout_alignTop="@id/ivAchievementWellmarkIcon"
-                    android:layout_alignBottom="@id/ivAchievementWellmarkIcon"
-                    android:layout_toEndOf="@id/ivAchievementWellmarkIcon"
-                    android:gravity="center_vertical"
-                    android:text="@string/wellmark_group"
-                    />
+                    style="@style/AchievementStyle.Layout"/>
 
                 <include
                     android:id="@+id/vDivider1"
                     style="@style/DividerStyle"
                     layout="@layout/divider"
-                    android:layout_below="@id/ivAchievementWellmarkIcon"
+                    android:layout_below="@id/itemAchievementWellmark"
                     tools:ignore="IncludeLayoutParam"
                     />
 

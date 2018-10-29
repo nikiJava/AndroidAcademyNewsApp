@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemAchievementWellmark"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,8 +10,9 @@
     <ImageView
         android:id="@+id/ivAchievementWellmarkIcon"
         style="@style/AchievementStyle.Icon"
-        android:background="@drawable/logo_work_cropped"
         android:contentDescription="@string/content_description_wellmark_group"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/logo_work_cropped"
         />
 
     <TextView

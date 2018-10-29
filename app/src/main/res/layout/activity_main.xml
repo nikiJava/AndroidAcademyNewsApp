@@ -37,11 +37,12 @@
 
             <include
                 android:id="@+id/itemAchievementWellmark"
+                style="@style/AchievementStyle.Layout"
                 layout="@layout/item_achievement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ivAvatar"
-                style="@style/AchievementStyle.Layout"/>
+                />
 
             <include
                 android:id="@+id/vDivider1"
@@ -57,7 +58,6 @@
                 android:layout_below="@id/vDivider1"
                 android:text="@string/about_me"
                 />
-
 
             <include
                 android:id="@+id/vDivider2"

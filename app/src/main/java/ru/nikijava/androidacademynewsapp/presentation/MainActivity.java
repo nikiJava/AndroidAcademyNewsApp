@@ -5,15 +5,15 @@ import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvAbout;
     private EditText etMessage;
     private View ivSendMessage;
-    private LinearLayout itemAchievementWellmark;
+    private TextView itemAchievementWellmark;
+    private NestedScrollView svContent;
 
-    private RelativeLayout layoutContent;
-    private LinearLayout layoutContacts;
+    private LinearLayout layoutContent;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         ivContactFacebook = findViewById(R.id.ivContactFacebook);
         tvAbout = findViewById(R.id.tvAbout);
         layoutContent = findViewById(R.id.layoutContent);
-        layoutContacts = findViewById(R.id.layoutContacts);
         itemAchievementWellmark = findViewById(R.id.itemAchievementWellmark);
+        svContent = findViewById(R.id.svContent);
         addDisclaimer();
     }
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAvatar() {
         int orientation = getResources().getConfiguration().orientation;
-        if (orientation == ORIENTATION_PORTRAIT) recomputeAvatarSize();
+        if (orientation == ORIENTATION_PORTRAIT) svContent.post(this::recomputeAvatarSize);
 
         Glide.with(this)
              .load(R.drawable.me)
@@ -102,14 +102,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void recomputeAvatarSize() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        float layoutPosition = metrics.heightPixels - getSupportActionBar().getHeight()
-                - getResources().getDimension(R.dimen.status_bar_height);
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ivAvatar.getLayoutParams();
+        float layoutPosition = svContent.getHeight();
+        LinearLayout.LayoutParams params =
+                (LinearLayout.LayoutParams) ivAvatar.getLayoutParams();
         params.height = (int) (layoutPosition * 0.4);
     }
-
 
     private void openUrl(@NonNull final String url) {
         browserInteractor.openUrlInBrowser(url, this);
@@ -124,29 +121,16 @@ public class MainActivity extends AppCompatActivity {
         TextView tvDisclaimer = new TextView(this);
         tvDisclaimer.setText(disclaimer);
         this.layoutContent.addView(tvDisclaimer);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMarginStart((int) getResources().getDimension(R.dimen.margin_start));
+        params.gravity = Gravity.END;
         tvDisclaimer.setPadding(
                 tvDisclaimer.getPaddingLeft(),
                 tvDisclaimer.getPaddingTop(),
                 (int) getResources().getDimension(R.dimen.standard_margin),
                 (int) getResources().getDimension(R.dimen.standard_margin)
         );
-        params.addRule(RelativeLayout.ALIGN_PARENT_END);
-        params.addRule(RelativeLayout.BELOW, R.id.layoutContacts);
         tvDisclaimer.setLayoutParams(params);
-
-        RelativeLayout.LayoutParams contactParams = new RelativeLayout.LayoutParams(
-                (RelativeLayout.LayoutParams) layoutContacts.getLayoutParams());
-        contactParams.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        contactParams.setMargins(
-                contactParams.leftMargin,
-                contactParams.topMargin,
-                contactParams.rightMargin,
-                0
-        );
-        layoutContacts.setLayoutParams(contactParams);
     }
 }

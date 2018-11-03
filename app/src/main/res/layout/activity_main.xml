@@ -13,17 +13,19 @@
         layout="@layout/app_bar"/>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/svContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/layoutContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:descendantFocusability="beforeDescendants"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:orientation="vertical"
             >
 
             <ImageView
@@ -37,92 +39,47 @@
 
             <include
                 android:id="@+id/itemAchievementWellmark"
-                style="@style/AchievementStyle.Layout"
+                style="@style/AchievementStyle"
                 layout="@layout/item_achievement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ivAvatar"
                 />
 
             <include
-                android:id="@+id/vDivider1"
                 style="@style/DividerStyle"
                 layout="@layout/divider"
-                android:layout_below="@id/itemAchievementWellmark"
                 tools:ignore="IncludeLayoutParam"
                 />
 
-            <TextView
-                android:id="@+id/tvAbout"
+            <include
                 style="@style/AboutStyle"
-                android:layout_below="@id/vDivider1"
-                android:text="@string/about_me"
+                layout="@layout/item_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 />
 
             <include
-                android:id="@+id/vDivider2"
                 style="@style/DividerStyle"
                 layout="@layout/divider"
-                android:layout_below="@id/tvAbout"
                 tools:ignore="IncludeLayoutParam"
                 />
 
-            <EditText
-                android:id="@+id/etMessage"
-                style="@style/SendMessageStyle.TextInput"
-                android:layout_below="@id/vDivider2"
-                android:layout_toStartOf="@id/ivSendMessage"
-                android:importantForAutofill="no"
-                tools:targetApi="o"
+            <include
+                style="@style/SendMessageStyle.Layout"
+                layout="@layout/item_send_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 />
 
-            <ImageView
-                android:id="@+id/ivSendMessage"
-                style="@style/SendMessageStyle.IconSend"
-                android:layout_alignBaseline="@id/etMessage"
-                android:layout_alignParentEnd="true"
-                android:baselineAlignBottom="true"
-                android:contentDescription="@string/content_description_send_message"
-                app:srcCompat="@drawable/ic_send_black_24dp"
-                />
-
-            <LinearLayout
-                android:id="@+id/layoutContacts"
+            <include
+                layout="@layout/layout_contacts"
                 style="@style/ContactStyle.Layout"
-                android:layout_below="@id/etMessage"
-                android:layout_centerHorizontal="true"
-                >
-                <FrameLayout
-                    android:id="@+id/layoutContactTelegram"
-                    style="@style/ContactStyle.ItemLayout"
-                    >
-                    <ImageView
-                        android:id="@+id/ivContactTelegram"
-                        style="@style/ContactStyle.Icon"
-                        android:contentDescription="@string/content_description_telegram_link"
-                        app:srcCompat="@drawable/ic_telegram"
-                        />
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                />
 
-                    <include layout="@layout/background_item_contact"/>
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/layoutContactFacebook"
-                    style="@style/ContactStyle.ItemLayout"
-                    >
-                    <ImageView
-                        android:id="@+id/ivContactFacebook"
-                        style="@style/ContactStyle.Icon"
-                        android:contentDescription="@string/content_description_facebook_link"
-                        app:srcCompat="@drawable/ic_facebook"
-                        />
-
-                    <include layout="@layout/background_item_contact"/>
-                </FrameLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

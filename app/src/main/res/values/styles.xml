@@ -38,29 +38,11 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
-    <style name="AchievementStyle"/>
-
-    <style name="AchievementStyle.Layout">
+    <style name="AchievementStyle">
         <item name="android:layout_marginStart">@dimen/margin_start</item>
         <item name="android:layout_marginTop">@dimen/standard_margin</item>
         <item name="android:layout_marginEnd">@dimen/standard_margin</item>
         <item name="android:layout_marginBottom">@dimen/standard_margin</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="AchievementStyle.Icon">
-        <item name="android:layout_width">@dimen/size_achievement_item_ico</item>
-        <item name="android:layout_height">@dimen/size_achievement_item_ico</item>
-        <item name="android:scaleType">center</item>
-    </style>
-
-    <style name="AchievementStyle.Text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingStart">@dimen/standard_margin_half</item>
-        <item name="android:textSize">@dimen/text_size</item>
-        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="DividerStyle">
@@ -71,8 +53,6 @@
     </style>
 
     <style name="AboutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/margin_start</item>
         <item name="android:layout_marginTop">@dimen/standard_margin</item>
         <item name="android:layout_marginEnd">@dimen/standard_margin</item>
@@ -82,22 +62,21 @@
     <style name="SendMessageStyle"/>
 
     <style name="SendMessageStyle.TextInput">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/margin_start</item>
-        <item name="android:layout_marginTop">@dimen/standard_margin</item>
-        <item name="android:hint">@string/enter_message_hint</item>
         <item name="android:imeOptions">actionSend|flagNoExtractUi</item>
         <item name="android:inputType">text</item>
         <item name="android:maxLines">1</item>
+        <item name="android:hint">@string/enter_message_hint</item>
     </style>
 
     <style name="SendMessageStyle.IconSend">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">@dimen/standard_margin</item>
         <item name="android:contentDescription">@string/content_description_send_message</item>
         <item name="android:tint">@color/colorAccent</item>
+    </style>
+
+    <style name="SendMessageStyle.Layout">
+        <item name="android:layout_marginTop">@dimen/standard_margin</item>
+        <item name="android:layout_marginEnd">@dimen/standard_margin</item>
+        <item name="android:layout_marginStart">@dimen/margin_start</item>
     </style>
 
 </resources>

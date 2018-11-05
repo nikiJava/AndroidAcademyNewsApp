@@ -53,7 +53,6 @@
                     />
 
                 <include
-                    android:id="@+id/vDivider1"
                     style="@style/DividerStyle"
                     layout="@layout/divider"
                     tools:ignore="IncludeLayoutParam"
@@ -67,7 +66,6 @@
                     />
 
                 <include
-                    android:id="@+id/vDivider2"
                     style="@style/DividerStyle"
                     layout="@layout/divider"
                     tools:ignore="IncludeLayoutParam"

@@ -18,10 +18,10 @@
 
     <ImageView
         android:id="@+id/ivSendMessage"
+        style="@style/SendMessageStyle.IconSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        style="@style/SendMessageStyle.IconSend"
         android:contentDescription="@string/content_description_send_message"
         app:srcCompat="@drawable/ic_send_black_24dp"
         />

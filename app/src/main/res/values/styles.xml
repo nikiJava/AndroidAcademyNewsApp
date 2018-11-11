@@ -76,16 +76,8 @@
         <item name="android:layout_marginStart">@dimen/margin_start</item>
     </style>
 
-    <style name="TextAppearance.Achievement" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textColorPrimary">@android:color/black</item>
-    </style>
-
-    <style name="TextAppearance.About" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textColorPrimary">@android:color/black</item>
-    </style>
-
-    <style name="TextAppearance.Disclaimer" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textColorPrimary">@android:color/black</item>
-    </style>
+    <style name="TextAppearance.Achievement" parent="@style/TextAppearance.AppCompat.Body1"/>
+    <style name="TextAppearance.About" parent="@style/TextAppearance.AppCompat.Body1"/>
+    <style name="TextAppearance.Disclaimer" parent="@style/TextAppearance.AppCompat.Body1"/>
 
 </resources>

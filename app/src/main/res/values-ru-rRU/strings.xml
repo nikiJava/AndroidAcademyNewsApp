@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="content_description_image_for_news">Изображение для новости</string>
+    <string name="top_news">Главные новости</string>
+</resources>

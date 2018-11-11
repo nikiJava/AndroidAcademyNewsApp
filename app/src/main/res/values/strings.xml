@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AndroidAcademyNewsApp</string>
+    <string name="app_name" translatable="false">AndroidAcademyNewsApp</string>
+    <string name="content_description_image_for_news">Image for the selected news</string>
+    <string name="top_news">Top news</string>
 </resources>

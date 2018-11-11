@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             >
+
             <LinearLayout
                 android:id="@+id/layoutContent"
                 android:layout_width="match_parent"
@@ -43,47 +44,10 @@
                 android:focusableInTouchMode="true"
                 android:orientation="vertical"
                 >
-
                 <include
-                    android:id="@+id/itemAchievementWellmark"
-                    style="@style/AchievementStyle"
-                    layout="@layout/item_achievement"
+                    layout="@layout/layout_about_content"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-                <include
-                    style="@style/DividerStyle"
-                    layout="@layout/divider"
-                    tools:ignore="IncludeLayoutParam"
-                    />
-
-                <include
-                    style="@style/AboutStyle"
-                    layout="@layout/item_about"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-                <include
-                    style="@style/DividerStyle"
-                    layout="@layout/divider"
-                    tools:ignore="IncludeLayoutParam"
-                    />
-
-                <include
-                    style="@style/SendMessageStyle.Layout"
-                    layout="@layout/item_send_message"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-                <include
-                    style="@style/ContactStyle.Layout"
-                    layout="@layout/layout_contacts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_height="match_parent"
                     />
 
             </LinearLayout>

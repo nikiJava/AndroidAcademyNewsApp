@@ -7,12 +7,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textViewStyle">@style/TextViewStyle</item>
         <item name="android:windowBackground">@android:color/white</item>
-    </style>
-
-    <style name="TextViewStyle">
-        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="ContactStyle"/>
@@ -43,6 +38,8 @@
         <item name="android:layout_marginTop">@dimen/standard_margin</item>
         <item name="android:layout_marginEnd">@dimen/standard_margin</item>
         <item name="android:layout_marginBottom">@dimen/standard_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">8dp</item>
     </style>
 
     <style name="DividerStyle">
@@ -77,6 +74,18 @@
         <item name="android:layout_marginTop">@dimen/standard_margin</item>
         <item name="android:layout_marginEnd">@dimen/standard_margin</item>
         <item name="android:layout_marginStart">@dimen/margin_start</item>
+    </style>
+
+    <style name="TextAppearance.Achievement" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.About" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.Disclaimer" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColorPrimary">@android:color/black</item>
     </style>
 
 </resources>

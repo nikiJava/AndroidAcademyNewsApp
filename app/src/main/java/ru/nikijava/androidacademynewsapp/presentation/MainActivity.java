@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         ivContactFacebook = findViewById(R.id.ivContactFacebook);
         tvAbout = findViewById(R.id.tvAbout);
         layoutContent = findViewById(R.id.layoutContent);
-        itemAchievementWellmark = findViewById(R.id.itemAchievementWellmark);
+        itemAchievementWellmark = findViewById(R.id.tvAchievementWellmarkName);
         svContent = findViewById(R.id.svContent);
         addDisclaimer();
     }
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 (int) getResources().getDimension(R.dimen.standard_margin),
                 (int) getResources().getDimension(R.dimen.standard_margin)
         );
+        TextViewCompat.setTextAppearance(tvDisclaimer, R.style.TextAppearance_Disclaimer);
         tvDisclaimer.setLayoutParams(params);
     }
 }

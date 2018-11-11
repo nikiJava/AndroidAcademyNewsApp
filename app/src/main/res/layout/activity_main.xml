@@ -37,48 +37,7 @@
                 tools:srcCompat="@drawable/me"
                 />
 
-            <include
-                android:id="@+id/itemAchievementWellmark"
-                style="@style/AchievementStyle"
-                layout="@layout/item_achievement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <include
-                style="@style/DividerStyle"
-                layout="@layout/divider"
-                tools:ignore="IncludeLayoutParam"
-                />
-
-            <include
-                style="@style/AboutStyle"
-                layout="@layout/item_about"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <include
-                style="@style/DividerStyle"
-                layout="@layout/divider"
-                tools:ignore="IncludeLayoutParam"
-                />
-
-            <include
-                style="@style/SendMessageStyle.Layout"
-                layout="@layout/item_send_message"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-            <include
-                layout="@layout/layout_contacts"
-                style="@style/ContactStyle.Layout"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                />
-
+            <include layout="@layout/layout_about_content"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

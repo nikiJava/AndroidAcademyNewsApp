@@ -1,23 +1,45 @@
 package ru.nikijava.androidacademynewsapp.data;
 
-import java.io.Serializable;
+public enum Category {
 
-import androidx.annotation.NonNull;
+    DARWIN_AWARDS(1, "Darwin Awards"),
+    CRIMINAL(2, "Criminal"),
+    ANIMALS(3, "Animals"),
+    MUSIC(4, "Music");
 
-public class Category implements Serializable {
     private final int id;
-    @NonNull private final String name;
+    private final String name;
 
-    public Category(int id, @NonNull String name) {
+    Category(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public static Category getById(int id) {
+        Category type;
+        switch (id) {
+            case 1:
+                type = DARWIN_AWARDS;
+                break;
+            case 2:
+                type = CRIMINAL;
+                break;
+            case 3:
+                type = ANIMALS;
+                break;
+            case 4:
+                type = MUSIC;
+                break;
+            default:
+                throw new IllegalArgumentException();
+        }
+        return type;
     }
 
     public int getId() {
         return id;
     }
 
-    @NonNull
     public String getName() {
         return name;
     }

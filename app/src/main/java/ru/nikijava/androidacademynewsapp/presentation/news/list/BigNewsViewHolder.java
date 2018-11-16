@@ -7,11 +7,9 @@ import com.bumptech.glide.RequestManager;
 import androidx.annotation.NonNull;
 import ru.nikijava.androidacademynewsapp.presentation.news.NewsAdapterItem;
 
-public class NewsViewHolder extends BaseNewsViewHolder<NewsAdapterItem> implements View.OnClickListener {
+public class BigNewsViewHolder extends BaseNewsViewHolder<NewsAdapterItem> {
 
-    private static final String TAG = NewsViewHolder.class.getSimpleName();
-
-    public NewsViewHolder(
+    public BigNewsViewHolder(
             @NonNull View itemView,
             @NonNull OnNewsClickListener onNewsClickListener,
             @NonNull RequestManager requestManager

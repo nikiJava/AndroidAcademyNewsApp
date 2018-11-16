@@ -2,11 +2,11 @@ package ru.nikijava.androidacademynewsapp.data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
-import ru.nikijava.adapterdelegate.Item;
 
-public final class News implements Item, Serializable {
+public class News implements Serializable {
 
     @NonNull private final String title;
     @NonNull private final String imageUrl;
@@ -29,6 +29,36 @@ public final class News implements Item, Serializable {
         this.publishDate = publishDate;
         this.previewText = previewText;
         this.fullText = fullText;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "{" +
+                "title='" + title + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category=" + category +
+                ", publishDate=" + publishDate +
+                ", previewText='" + previewText + '\'' +
+                ", fullText='" + fullText + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof News)) return false;
+        final News news = (News) o;
+        return Objects.equals(title, news.title) &&
+                Objects.equals(imageUrl, news.imageUrl) &&
+                category == news.category &&
+                Objects.equals(publishDate, news.publishDate) &&
+                Objects.equals(previewText, news.previewText) &&
+                Objects.equals(fullText, news.fullText);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, imageUrl, category, publishDate, previewText, fullText);
     }
 
     @NonNull
@@ -59,17 +89,5 @@ public final class News implements Item, Serializable {
     @NonNull
     public String getFullText() {
         return fullText;
-    }
-
-    @Override
-    public String toString() {
-        return "News{" +
-                "title='" + title + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", category=" + category +
-                ", publishDate=" + publishDate +
-                ", previewText='" + previewText + '\'' +
-                ", fullText='" + fullText + '\'' +
-                '}';
     }
 }

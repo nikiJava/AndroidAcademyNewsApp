@@ -16,11 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import ru.nikijava.adapterdelegate.CompositeDelegateAdapter;
 import ru.nikijava.adapterdelegate.Item;
 import ru.nikijava.androidacademynewsapp.R;
+import ru.nikijava.androidacademynewsapp.data.Category;
+import ru.nikijava.androidacademynewsapp.data.News;
 import ru.nikijava.androidacademynewsapp.data.NewsRepository;
 import ru.nikijava.androidacademynewsapp.data.NewsRepositoryImpl;
+import ru.nikijava.androidacademynewsapp.presentation.news.NewsAdapterItem;
 import ru.nikijava.androidacademynewsapp.presentation.news.details.NewsDetailsActivity;
 
-public class NewsListActivity extends AppCompatActivity {
+public class NewsListActivity extends AppCompatActivity implements OnNewsClickListener {
 
     private static final String TAG = NewsListActivity.class.getSimpleName();
     private final NewsRepository newsRepository = new NewsRepositoryImpl();
@@ -32,13 +35,22 @@ public class NewsListActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.top_news));
         rvNewsList = findViewById(R.id.rvNewsList);
         initList();
-        populateList();
+
+        List<News> data = newsRepository.getNews();
+        List<Item> mappedNews = mapNewsForPresentation(data);
+        getAdapter().swapData(mappedNews);
     }
 
+    @Override
+    public void onNewsClick(News news) {
+        NewsDetailsActivity.start(this, news);
+    }
+
+    @SuppressWarnings("unchecked call")
     private void initList() {
         CompositeDelegateAdapter adapter = new CompositeDelegateAdapter.Builder<Item>()
-                .add(new NewsAdapter(item -> NewsDetailsActivity.start(this, item),
-                        Glide.with(this)))
+                .add(new NewsAdapter(this, Glide.with(this), R.layout.item_news))
+                .add(new NewsAdapter(this, Glide.with(this), R.layout.item_news_big))
                 .build();
 
         rvNewsList.setAdapter(adapter);
@@ -60,9 +72,17 @@ public class NewsListActivity extends AppCompatActivity {
                 getResources().getDimensionPixelSize(R.dimen.spacing_micro)));
     }
 
-    private void populateList() {
-        List<Item> data = new ArrayList<>(newsRepository.getNews());
-        getAdapter().swapData(data);
+    private List<Item> mapNewsForPresentation(List<News> news) {
+        List<Item> mappedNews = new ArrayList<>(news.size());
+        for (News newsItem : news) {
+            if (newsItem.getCategory() == Category.CRIMINAL) {
+                mappedNews.add(
+                        new NewsAdapterItem(newsItem, R.layout.item_news_big));
+            } else {
+                mappedNews.add(new NewsAdapterItem(newsItem, R.layout.item_news));
+            }
+        }
+        return mappedNews;
     }
 
     @SuppressWarnings("unchecked")

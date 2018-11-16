@@ -6,38 +6,50 @@ import com.bumptech.glide.RequestManager;
 
 import java.util.List;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import ru.nikijava.adapterdelegate.BaseDelegateAdapter;
+import ru.nikijava.adapterdelegate.Item;
 import ru.nikijava.androidacademynewsapp.R;
-import ru.nikijava.androidacademynewsapp.data.News;
+import ru.nikijava.androidacademynewsapp.presentation.news.NewsAdapterItem;
 
-public class NewsAdapter extends BaseDelegateAdapter<NewsViewHolder, News> {
+public class NewsAdapter extends
+        BaseDelegateAdapter<BaseNewsViewHolder, NewsAdapterItem> {
 
     private static final String TAG = NewsAdapter.class.getSimpleName();
-    @NonNull private final OnNewsClickListener onNewsClickListener;
     @NonNull private final RequestManager requestManager;
+    @NonNull private final OnNewsClickListener onNewsClickListener;
+    private final @LayoutRes int layoutId;
 
     public NewsAdapter(
             @NonNull OnNewsClickListener onNewsClickListener,
-            @NonNull RequestManager requestManager
+            @NonNull RequestManager requestManager,
+            @LayoutRes int layoutId
     ) {
         this.onNewsClickListener = onNewsClickListener;
         this.requestManager = requestManager;
+        this.layoutId = layoutId;
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.item_news;
-    }
-
-    @NonNull
-    @Override
-    public NewsViewHolder createViewHolder(@NonNull View itemView) {
-        return new NewsViewHolder(itemView, onNewsClickListener, requestManager);
+        return layoutId;
     }
 
     @Override
     public boolean isForViewType(@NonNull List<?> items, int position) {
-        return items.get(position) instanceof News;
+        Item item = (Item) items.get(position);
+        return item instanceof NewsAdapterItem && item.getLayoutId() == layoutId;
+    }
+
+    @NonNull
+    @Override
+    public BaseNewsViewHolder createViewHolder(@NonNull View itemView) {
+        switch (layoutId) {
+            case R.layout.item_news_big:
+                return new BigNewsViewHolder(itemView, onNewsClickListener, requestManager);
+            default:
+                return new NewsViewHolder(itemView, onNewsClickListener, requestManager);
+        }
     }
 }

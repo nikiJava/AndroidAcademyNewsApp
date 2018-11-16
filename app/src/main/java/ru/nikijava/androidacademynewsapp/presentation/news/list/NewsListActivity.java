@@ -4,6 +4,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +50,14 @@ public class NewsListActivity extends AppCompatActivity implements OnNewsClickLi
 
     @SuppressWarnings("unchecked call")
     private void initList() {
+        RequestOptions options = RequestOptions
+                .placeholderOf(R.drawable.ic_photo_camera_grey_24dp)
+                .error(R.drawable.ic_photo_camera_grey_24dp);
+        RequestManager glide = Glide.with(this)
+                                    .setDefaultRequestOptions(options);
         CompositeDelegateAdapter adapter = new CompositeDelegateAdapter.Builder<Item>()
-                .add(new NewsAdapter(this, Glide.with(this), R.layout.item_news))
-                .add(new NewsAdapter(this, Glide.with(this), R.layout.item_news_big))
+                .add(new NewsAdapter(this, glide, R.layout.item_news))
+                .add(new NewsAdapter(this, glide, R.layout.item_news_big))
                 .build();
 
         rvNewsList.setAdapter(adapter);

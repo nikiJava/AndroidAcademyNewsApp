@@ -1,4 +1,4 @@
-package ru.nikijava.androidacademynewsapp.presentation;
+package ru.nikijava.androidacademynewsapp.presentation.about;
 
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
@@ -24,9 +24,9 @@ import ru.nikijava.androidacademynewsapp.data.models.Link;
 import ru.nikijava.androidacademynewsapp.domain.BrowserInteractor;
 import ru.nikijava.androidacademynewsapp.domain.EmailInteractor;
 
-public class MainActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = AboutActivity.class.getSimpleName();
 
     private final EmailInteractor emailInteractor = new EmailInteractor();
     private final BrowserInteractor browserInteractor = new BrowserInteractor();
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_about);
         initView();
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(

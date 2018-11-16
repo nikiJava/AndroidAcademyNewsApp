@@ -12,10 +12,9 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import ru.nikijava.adapterdelegate.CompositeDelegateAdapter;
 import ru.nikijava.adapterdelegate.Item;
 import ru.nikijava.androidacademynewsapp.R;
@@ -68,7 +67,7 @@ public class NewsListActivity extends AppCompatActivity implements OnNewsClickLi
         RecyclerView.LayoutManager layoutManager;
         switch (getResources().getConfiguration().orientation) {
             case Configuration.ORIENTATION_LANDSCAPE: {
-                layoutManager = new GridLayoutManager(this, 2);
+                layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 break;
             }
             default: {

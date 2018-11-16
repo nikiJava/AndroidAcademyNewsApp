@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutContacts"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <FrameLayout
+        android:id="@+id/layoutContactTelegram"
+        style="@style/ContactStyle.ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/ivContactTelegram"
+            style="@style/ContactStyle.Icon"
+            android:contentDescription="@string/content_description_telegram_link"
+            app:srcCompat="@drawable/ic_telegram"
+            />
+
+        <include layout="@layout/background_item_contact"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/layoutContactFacebook"
+        style="@style/ContactStyle.ItemLayout"
+        >
+        <ImageView
+            android:id="@+id/ivContactFacebook"
+            style="@style/ContactStyle.Icon"
+            android:contentDescription="@string/content_description_facebook_link"
+            app:srcCompat="@drawable/ic_facebook"
+            />
+
+        <include layout="@layout/background_item_contact"/>
+    </FrameLayout>
+
+</LinearLayout>

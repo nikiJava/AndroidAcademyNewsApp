@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main"
+    >
+
+    <TextView
+        android:id="@+id/tvAchievementWellmarkName"
+        style="@style/AchievementStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/logo_work_cropped"
+        android:text="@string/wellmark_group"
+        android:textAppearance="@style/TextAppearance.Achievement"
+        />
+
+    <include
+        style="@style/DividerStyle"
+        layout="@layout/divider"
+        tools:ignore="IncludeLayoutParam"
+        />
+
+    <TextView
+        android:id="@+id/tvAbout"
+        style="@style/AboutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_me"
+        android:textAppearance="@style/TextAppearance.About"
+        />
+
+    <include
+        style="@style/DividerStyle"
+        layout="@layout/divider"
+        tools:ignore="IncludeLayoutParam"
+        />
+
+    <include
+        style="@style/SendMessageStyle.Layout"
+        layout="@layout/item_send_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <include
+        style="@style/ContactStyle.Layout"
+        layout="@layout/layout_contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        />
+</merge>

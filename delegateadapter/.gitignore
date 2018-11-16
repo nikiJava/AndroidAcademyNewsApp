@@ -1,0 +1,6 @@
+*.iml
+/build
+/captures
+.externalNativeBuild
+/src/test
+/src/androidTest

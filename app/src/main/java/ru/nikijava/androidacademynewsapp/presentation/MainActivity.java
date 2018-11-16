@@ -3,12 +3,6 @@ package ru.nikijava.androidacademynewsapp.presentation;
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v4.widget.TextViewCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -19,6 +13,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
+import androidx.core.widget.TextViewCompat;
 import ru.nikijava.androidacademynewsapp.R;
 import ru.nikijava.androidacademynewsapp.data.models.Link;
 import ru.nikijava.androidacademynewsapp.domain.BrowserInteractor;

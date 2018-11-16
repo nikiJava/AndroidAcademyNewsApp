@@ -1,8 +1,7 @@
 package ru.nikijava.androidacademynewsapp.data.models;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import ru.nikijava.androidacademynewsapp.R;
 
 public enum Link {

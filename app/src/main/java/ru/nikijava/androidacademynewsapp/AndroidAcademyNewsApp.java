@@ -1,8 +1,8 @@
 package ru.nikijava.androidacademynewsapp;
 
 import android.app.Application;
-import android.content.res.Configuration;
-import android.support.v7.app.AppCompatDelegate;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class AndroidAcademyNewsApp extends Application {
 

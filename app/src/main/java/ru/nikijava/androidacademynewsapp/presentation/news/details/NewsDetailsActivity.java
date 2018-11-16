@@ -6,14 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import ru.nikijava.androidacademynewsapp.DateFormatter;
 import ru.nikijava.androidacademynewsapp.R;
 import ru.nikijava.androidacademynewsapp.data.News;
@@ -29,7 +29,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     private TextView tvTitle;
     private TextView tvDate;
     private TextView tvDetails;
-    private ScrollView svContent;
+    private NestedScrollView svContent;
 
     public static void start(Context context, News news) {
         Intent intent = new Intent(context, NewsDetailsActivity.class);
@@ -78,8 +78,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
 
     private void recomputeAvatarSize() {
         float layoutPosition = svContent.getHeight();
-        LinearLayout.LayoutParams params =
-                (LinearLayout.LayoutParams) ivImage.getLayoutParams();
+        CollapsingToolbarLayout.LayoutParams params =
+                (CollapsingToolbarLayout.LayoutParams) ivImage.getLayoutParams();
         params.height = (int) (layoutPosition * 0.4);
     }
 }

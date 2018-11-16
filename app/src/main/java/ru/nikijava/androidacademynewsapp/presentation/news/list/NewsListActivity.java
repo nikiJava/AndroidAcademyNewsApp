@@ -12,6 +12,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,11 +30,13 @@ public class NewsListActivity extends AppCompatActivity implements OnNewsClickLi
 
     private static final String TAG = NewsListActivity.class.getSimpleName();
     private final NewsRepository newsRepository = new NewsRepositoryImpl();
+
     private RecyclerView rvNewsList;
 
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
+        setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(getString(R.string.top_news));
         rvNewsList = findViewById(R.id.rvNewsList);
         initList();

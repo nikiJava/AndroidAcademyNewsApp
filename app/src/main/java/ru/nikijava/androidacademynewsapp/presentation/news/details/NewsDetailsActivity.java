@@ -42,6 +42,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
         news = (News) getIntent().getSerializableExtra(NEWS_KEY);
+        setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle(news.getCategory().getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initViews();

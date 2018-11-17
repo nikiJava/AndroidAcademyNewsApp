@@ -14,4 +14,6 @@
     <string name="content_description_facebook_link">Ссылка на страницу разработчика в Facebook</string>
     <string name="content_description_telegram_link">Ссылка на страницу разработчика в Telegram</string>
     <string name="content_description_wellmark_group">Логотип Wellmark Group - текущего места работы</string>
+    <string name="content_description_image_for_news">Изображение для новости</string>
+    <string name="top_news">Главные новости</string>
 </resources>

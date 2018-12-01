@@ -21,7 +21,7 @@ import ru.nikijava.androidacademynewsapp.data.News;
 public class NewsDetailsActivity extends AppCompatActivity {
 
     private static String NEWS_KEY = "news_key";
-    private final DateFormatter dateFormatter = new DateFormatter();
+    private static final DateFormatter dateFormatter = new DateFormatter();
 
     private News news;
 

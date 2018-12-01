@@ -3,11 +3,11 @@ package ru.nikijava.adapterdelegate;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.collection.ArrayMap;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CompositeDelegateAdapter<T>
@@ -78,7 +78,7 @@ public class CompositeDelegateAdapter<T>
         private int count;
 
         public Builder() {
-            typeToAdapterMap = new HashMap<>();
+            typeToAdapterMap = new ArrayMap<>();
         }
 
         public Builder<T> add(@NonNull final IDelegateAdapter<?, ? extends T> delegateAdapter) {

@@ -31,9 +31,6 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/content_description_image_for_news"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars[0]"
                 />
 
@@ -73,10 +70,6 @@
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:layout_marginEnd="@dimen/spacing_normal"
                 android:textAppearance="@style/TextAppearance.Details.Title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivImage"
                 tools:text="Create your NewsItem XML layout"
                 />
             <TextView
@@ -87,10 +80,6 @@
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:layout_marginEnd="@dimen/spacing_normal"
                 android:textAppearance="@style/TextAppearance.Details.Date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                 tools:text="Вчера"
                 />
             <TextView
@@ -102,9 +91,6 @@
                 android:layout_marginEnd="@dimen/spacing_normal"
                 android:layout_marginBottom="@dimen/spacing_normal"
                 android:textAppearance="@style/TextAppearance.Details.Text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDate"
                 tools:text="Your XML layout should show News category, title, preview text, published date and heading image"
                 />
         </LinearLayout>

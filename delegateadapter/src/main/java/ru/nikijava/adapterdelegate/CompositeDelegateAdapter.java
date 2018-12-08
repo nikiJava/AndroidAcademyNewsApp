@@ -1,22 +1,23 @@
 package ru.nikijava.adapterdelegate;
 
-import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.collection.ArrayMap;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class CompositeDelegateAdapter<T>
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int FIRST_VIEW_TYPE = 0;
+    private static final String TAG = CompositeDelegateAdapter.class.getSimpleName();
     @NonNull protected final List<T> data = new ArrayList<>();
-    @NonNull private final SparseArray<IDelegateAdapter> typeToAdapterMap;
+    @NonNull private final Map<Integer,IDelegateAdapter> typeToAdapterMap;
 
-    private CompositeDelegateAdapter(@NonNull final SparseArray<IDelegateAdapter> typeToAdapterMap) {
+    private CompositeDelegateAdapter(@NonNull final Map<Integer,IDelegateAdapter> typeToAdapterMap) {
         this.typeToAdapterMap = typeToAdapterMap;
     }
 
@@ -44,11 +45,11 @@ public class CompositeDelegateAdapter<T>
 
     @Override
     public final int getItemViewType(final int position) {
-        for (int i = FIRST_VIEW_TYPE; i < typeToAdapterMap.size(); i++) {
-            final IDelegateAdapter delegate = typeToAdapterMap.valueAt(i);
+        for (int key : typeToAdapterMap.keySet()) {
+            final IDelegateAdapter delegate = typeToAdapterMap.get(key);
             //noinspection unchecked
             if (delegate.isForViewType(data, position)) {
-                return typeToAdapterMap.keyAt(i);
+                return key;
             }
         }
         throw new NullPointerException("Can not get viewType for position " + position);
@@ -73,15 +74,16 @@ public class CompositeDelegateAdapter<T>
 
     public static class Builder<T> {
 
-        private final SparseArray<IDelegateAdapter> typeToAdapterMap;
+        private final Map<Integer,IDelegateAdapter> typeToAdapterMap;
         private int count;
 
         public Builder() {
-            typeToAdapterMap = new SparseArray<>();
+            typeToAdapterMap = new ArrayMap<>();
         }
 
         public Builder<T> add(@NonNull final IDelegateAdapter<?, ? extends T> delegateAdapter) {
-            typeToAdapterMap.put(count++, delegateAdapter);
+            count++;
+            typeToAdapterMap.put(delegateAdapter.getLayoutId(), delegateAdapter);
             return this;
         }
 

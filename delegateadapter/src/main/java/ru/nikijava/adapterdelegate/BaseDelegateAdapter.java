@@ -40,8 +40,8 @@ public abstract class BaseDelegateAdapter<VH extends BaseViewHolder, T>
     }
 
     @LayoutRes
-    abstract int getLayoutId();
+    public abstract int getLayoutId();
 
     @NonNull
-    abstract VH createViewHolder(@NonNull final View itemView);
+    public abstract VH createViewHolder(@NonNull final View itemView);
 }

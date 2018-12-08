@@ -3,5 +3,7 @@
     <color name="colorPrimary">#ffdfb840</color>
     <color name="colorPrimaryDark">#ffd4a515</color>
     <color name="colorAccent">#ff962326</color>
+    <color name="color_transparent_grey">#b4c6c5c5</color>
     <color name="window_background">?android:attr/colorBackground</color>
+    <color name="background_card_title">@color/color_transparent_grey</color>
 </resources>

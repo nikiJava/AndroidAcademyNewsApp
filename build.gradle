@@ -2,8 +2,8 @@
 
 buildscript {
     ext {
-        support_version = '28.0.0'
         glide_version = '4.8.0'
+        androidx_version = '1.0.0'
     }
     repositories {
         google()

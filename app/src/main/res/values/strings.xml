@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">New York Times</string>
     <string name="my_first_name">Nikita</string>
@@ -15,4 +16,7 @@
     <string name="content_description_facebook_link">Link to developer page on Facebook</string>
     <string name="content_description_telegram_link">Link to developer page on Telegram</string>
     <string name="content_description_wellmark_group">Wellmark Group the current job logo</string>
+
+    <string name="content_description_image_for_news">Image for the selected news</string>
+    <string name="top_news">Top news</string>
 </resources>

@@ -4,6 +4,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,4 +22,7 @@ public interface IDelegateAdapter<VH extends RecyclerView.ViewHolder, T> {
     RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType);
 
     void onRecycled(@NonNull final VH holder);
+
+    @LayoutRes
+    int getLayoutId();
 }

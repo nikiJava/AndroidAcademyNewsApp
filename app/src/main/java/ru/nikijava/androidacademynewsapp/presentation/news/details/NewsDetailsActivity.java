@@ -21,7 +21,6 @@ import ru.nikijava.androidacademynewsapp.data.News;
 public class NewsDetailsActivity extends AppCompatActivity {
 
     private static String NEWS_KEY = "news_key";
-    private static final DateFormatter dateFormatter = new DateFormatter();
 
     private News news;
 
@@ -64,7 +63,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     }
 
     private void showNews() {
-        tvDate.setText(dateFormatter.formatDateTime(this, news.getPublishDate()));
+        tvDate.setText(DateFormatter.formatDateTime(this, news.getPublishDate()));
         tvDetails.setText(news.getFullText());
         tvTitle.setText(news.getTitle());
         setImage();

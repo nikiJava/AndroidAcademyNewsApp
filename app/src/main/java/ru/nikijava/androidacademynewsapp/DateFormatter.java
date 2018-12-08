@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class DateFormatter {
 
-    public CharSequence formatDateTime(Context context, Date dateTime) {
+    public static CharSequence formatDateTime(Context context, Date dateTime) {
         return DateUtils.getRelativeDateTimeString(
                 context,
                 dateTime.getTime(),

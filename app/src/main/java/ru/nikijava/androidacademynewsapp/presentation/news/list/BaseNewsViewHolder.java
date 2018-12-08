@@ -18,7 +18,6 @@ public class BaseNewsViewHolder<T extends NewsAdapterItem> extends BaseViewHolde
     private static final String TAG = NewsViewHolder.class.getSimpleName();
     @NonNull private final OnNewsClickListener onNewsClickListener;
     @NonNull private final RequestManager requestManager;
-    private final DateFormatter dateFormatter = new DateFormatter();
 
     private final TextView tvCategory;
     private final TextView tvTitle;
@@ -50,7 +49,7 @@ public class BaseNewsViewHolder<T extends NewsAdapterItem> extends BaseViewHolde
         tvCategory.setText(news.getCategory().getName());
         tvTitle.setText(news.getTitle());
         tvBody.setText(news.getFullText());
-        tvDate.setText(dateFormatter.formatDateTime(itemView.getContext(), news.getPublishDate()));
+        tvDate.setText(DateFormatter.formatDateTime(itemView.getContext(), news.getPublishDate()));
         requestManager.load(news.getImageUrl()).into(ivImage);
     }
 

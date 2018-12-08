@@ -12,7 +12,6 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import ru.nikijava.adapterdelegate.CompositeDelegateAdapter;
@@ -64,16 +63,18 @@ public class NewsListActivity extends AppCompatActivity implements OnNewsClickLi
 
         rvNewsList.setAdapter(adapter);
 
-        RecyclerView.LayoutManager layoutManager;
+        int columnCounts;
         switch (getResources().getConfiguration().orientation) {
             case Configuration.ORIENTATION_LANDSCAPE: {
-                layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                columnCounts = 2;
                 break;
             }
             default: {
-                layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+                columnCounts = 1;
             }
         }
+
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(columnCounts, StaggeredGridLayoutManager.VERTICAL);
 
         rvNewsList.setLayoutManager(layoutManager);
 
